@@ -105,18 +105,18 @@ This project is currently released under the Apache License Version 2.0, see [LI
 
 ## Screenshots ##
 
-![Apps Installer](/resources/installer.png)
+![Apps Installer](https://raw.githubusercontent.com/ibilux/MobyDroid/master/resources/installer.png)
 
-![Apps Manager](/resources/manager.png)
+![Apps Manager](https://raw.githubusercontent.com/ibilux/MobyDroid/master/resources/manager.png)
 
-![File Manager](/resources/browser.png)
+![File Manager](https://raw.githubusercontent.com/ibilux/MobyDroid/master/resources/browser.png)
 
-![Screen Capture](/resources/screenshot.png)
+![Screen Capture](https://raw.githubusercontent.com/ibilux/MobyDroid/master/resources/screenshot.png)
 
-![Device Information](/resources/info.png)
+![Device Information](https://raw.githubusercontent.com/ibilux/MobyDroid/master/resources/info.png)
 
-![Terminal](/resources/terminal.png)
+![Terminal](https://raw.githubusercontent.com/ibilux/MobyDroid/master/resources/terminal.png)
 
-![Settings](/resources/settings.png)
+![Settings](https://raw.githubusercontent.com/ibilux/MobyDroid/master/resources/settings.png)
 
-![Tasks](/resources/tasks.png)
+![Tasks](https://raw.githubusercontent.com/ibilux/MobyDroid/master/resources/tasks.png)

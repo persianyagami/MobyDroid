@@ -139,6 +139,20 @@ public class JPanel_AppManager extends javax.swing.JPanel {
      * Handle buttons events.
      */
     private void uninstallHandle() {
+        // check for connected device
+        if (!isDeviceConnected()) {
+            return;
+        }
+
+        // check if any packages are marked
+        if (!isPackageMarked()) {
+            return;
+        }
+        // confirm uninstalling
+        if (JOptionPane.showConfirmDialog(this, "Are you sure?", "Uninstall packages", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, ResourceLoader.MaterialIcons_DELETE_FOREVER) != JOptionPane.YES_OPTION) {
+            return;
+        }
+
         uninstallPackages();
 
         // show tasks progress window
@@ -154,6 +168,16 @@ public class JPanel_AppManager extends javax.swing.JPanel {
     }
 
     private void pullHandle() {
+        // check for connected device
+        if (!isDeviceConnected()) {
+            return;
+        }
+
+        // check if any packages are marked
+        if (!isPackageMarked()) {
+            return;
+        }
+
         pullPackages();
 
         // show tasks progress window
@@ -161,10 +185,24 @@ public class JPanel_AppManager extends javax.swing.JPanel {
     }
 
     private void refreshHandle() {
+        // check for connected device
+        if (!isDeviceConnected()) {
+            return;
+        }
+
         updatePackagesList();
 
         // show tasks progress window
-        MobyDroid.showTasksPanel();
+        // MobyDroid.showTasksPanel();
+    }
+
+    private boolean isDeviceConnected() {
+        // check for connected device
+        if (MobyDroid.getDevice() == null) {
+            JOptionPane.showMessageDialog(this, "Please connect to a device first.", "No device", JOptionPane.OK_OPTION, ResourceLoader.MaterialIcons_WARNING);
+            return false;
+        }
+        return true;
     }
 
     private boolean isPackageMarked() {
@@ -243,15 +281,6 @@ public class JPanel_AppManager extends javax.swing.JPanel {
      * Uninstall packages.
      */
     private void uninstallPackages() {
-        // check if any packages are marked
-        if (!isPackageMarked()) {
-            return;
-        }
-        // confirm uninstalling
-        if (JOptionPane.showConfirmDialog(this, "Are you sure?", "Uninstall packages", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE, ResourceLoader.MaterialIcons_DELETE_FOREVER) != JOptionPane.YES_OPTION) {
-            return;
-        }
-
         // disable UI
         disableUI();
 
@@ -268,10 +297,6 @@ public class JPanel_AppManager extends javax.swing.JPanel {
      * Pull apk file for packages.
      */
     private void pullPackages() {
-        // check if any packages are marked
-        if (!isPackageMarked()) {
-            return;
-        }
         // disable UI
         disableUI();
 
@@ -371,8 +396,8 @@ public class JPanel_AppManager extends javax.swing.JPanel {
     class PopUpDemo extends JPopupMenu {
 
         JMenuItem refreshMenuItem = new JMenuItem("Refresh", MaterialIcons.REFRESH);
-        JMenuItem uninstallMenuItem = new JMenuItem("Download", MaterialIcons.DELETE_FOREVER);
-        JMenuItem pullMenuItem = new JMenuItem("Upload", MaterialIcons.SAVE);
+        JMenuItem uninstallMenuItem = new JMenuItem("Uninstall", MaterialIcons.DELETE_FOREVER);
+        JMenuItem pullMenuItem = new JMenuItem("Pull", MaterialIcons.SAVE);
 
         public PopUpDemo() {
             refreshMenuItem.addActionListener((ActionEvent evt) -> {
